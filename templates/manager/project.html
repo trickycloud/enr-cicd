@@ -1,0 +1,235 @@
+{% extends 'manager/manager_base.html' %}
+
+{% block content %}
+{% load static %}
+{% load extras %}
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Search form -->
+
+          <!-- Navbar links -->
+          <ul class="navbar-nav align-items-center  ml-md-auto ">
+            <li class="nav-item d-xl-none">
+              <!-- Sidenav toggler -->
+              <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>vew
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item d-sm-none">
+              <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                <i class="ni ni-zoom-split-in"></i>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="{% static 'assets/img/theme/team-5.jpg' %}">
+                  </span>
+                  <div class="media-body  ml-2  d-none d-lg-block">
+                    <span class="mb-0 text-sm  font-weight-bold">{{request.user.name}}</span>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu  dropdown-menu-right ">
+                <div class="dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome!</h6>
+                </div>
+                <a href="Employee_Profile.html" class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span>My profile</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-settings-gear-65"></i>
+                  <span>Settings</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-calendar-grid-58"></i>
+                  <span>Activity</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-support-16"></i>
+                  <span>Support</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <br>
+    <div class="container">
+      <center>
+        <div class="text-center title"">
+          <h1 class="text-white p-2">{{project.name}}</h1>
+          <div class="row p-3">
+            <div class="col-xl-6">
+              <div class="rounded bg-white">
+                <h5>Requirement Files</h5>
+                {% for req in reqs %}
+                  <a href={{req.file.url}}>{{req.filename}}</a>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="rounded bg-white">
+                <h5>Documentation Files</h5>
+                {% for doc in docs %}
+                  <a href={{doc.file.url}}>{{doc.filename}}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </center>
+      <div class="mt-5">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                Team Members
+              </div>
+              <div class="card-body"  id="body">
+                {% for tm in tms %}
+                <div class="form-check mt-2 mb-2 projects">
+                  <div class="row"  id="headingOne">
+                    <div class="col-sm-8">
+                      <h3 class="m-auto"><a href={{tm.member.user.get_absolute_url}}>{{tm.member.user.name}}</a></h3>
+                    </div>
+                    <div class="col-sm-3" data-toggle="collapse" data-target="#q{{tm.id}}q" aria-expanded="true" aria-controls="q{{tm.id}}q">
+                      <!-- <h5 class="m-auto"><b>Deadline:</b> {{tm.id}}</h5> -->
+                    </div>
+                    <div class="col-sm-1" data-toggle="collapse" data-target="#q{{tm.id}}q" aria-expanded="true" aria-controls="q{{tm.id}}q">
+                      <div class="m-auto"><i class="fa fa-caret-down"></i></div>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div id="q{{tm.id}}q" class="collapse w-100" aria-labelledby="headingOne" data-parent="body">
+                         <table class="table">
+                           <thead>
+                             <th>Task</th>
+                             <th>Completed</th>
+                           </thead>
+                           <tbody>
+                             {% for task in tasks %}
+                              {% if task.employee == tm.member.user %}
+                               <tr>
+                                 <td>
+                                   {{task.task_detail}}
+                                 </td>
+                                 <td>
+                                   {% if task.completed %}
+                                     <i class="fa fa-check green"></i>
+                                   {% else %}
+                                     <i class="fa fa-times red"></i>
+                                   {% endif %}
+                                 </td>
+                               </tr>
+                               {% endif %}
+                             {% endfor %}
+                           </tbody>
+                           <form class="" action="/tasks/add" method="post">
+                             {% csrf_token %}
+                             <div class="row p-4 pr-5">
+                               <div class="col-sm-8 m-auto w-100">
+                                 <input class="input w-100" name="details" placeholder="Task">
+                               </div>
+                                <div class="col-sm-4">
+                                  <button type="submit" class="btn btn-primary">
+                                    Add Task
+                                  </button>
+                                </div>
+                            </div>
+                            <div class="row pl-4 pr-5">
+                              <div class="col-sm-4 m-auto w-100" style="opacity:0;">
+                                <input type="text" name="project" value="{{project.id}}">
+                              </div>
+                              <div class="col-sm-4 m-auto w-100" style="opacity:0;">
+                                <input type="text" name="employee" value="{{tm.member.user.employee_id}}">
+                              </div>
+                             </div>
+                           </form>
+                         </table>
+                    </div>
+                 </div>
+         			</div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-header">
+                All Tasks
+              </div>
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <th>S.No.</th>
+                    <th>Task</th>
+                    <th>Completed</th>
+                  </thead>
+                  <tbody>
+                    {% for task in tasks %}
+                      <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{task.task_detail}}</td>
+                        <td>
+                          {% if task.completed %}
+                            <i class="fa fa-check green"></i>
+                          {% else %}
+                            <i class="fa fa-times red"></i>
+                          {% endif %}
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- Footer -->
+      <footer class="footer pt-0">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6">
+            <div class="copyright text-center  text-lg-left  text-muted">
+              &copy;   @ 2020 <a href="https://engagenreap.com" class="font-weight-bold ml-1" target="_blank">Enr Consultancy Services</a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="https://engagenreap.com/aboutus.html" class="nav-link" target="_blank">About Us</a>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,323 @@
+{% extends 'employee/employee_base.html' %}
+
+{% block content %}
+{% load static %}
+
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Search form -->
+        <h1 class="display-3 text-white">Welcome John!!</h1>
+          <!-- Navbar links -->
+          <ul class="navbar-nav align-items-center  ml-md-auto ">
+            <li class="nav-item d-xl-none">
+              <!-- Sidenav toggler -->
+              <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>vew
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item d-sm-none">
+              <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                <i class="ni ni-zoom-split-in"></i>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="{% static 'assets/img/theme/team-5.jpg' %}">
+                  </span>
+                  <div class="media-body  ml-2  d-none d-lg-block">
+                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu  dropdown-menu-right ">
+                <div class="dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome!</h6>
+                </div>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span>My profile</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-settings-gear-65"></i>
+                  <span>Settings</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-calendar-grid-58"></i>
+                  <span>Activity</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-support-16"></i>
+                  <span>Support</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+
+          </div>
+          <!-- Card stats -->
+          <div class="row">
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Working Projects</h5>
+                      <span class="h2 font-weight-bold mb-0">{{projects|length}}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                        <i class="ni ni-active-40"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total <br>projects</h5>
+                      <span class="h2 font-weight-bold mb-0">13</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                        <i class="ni ni-chart-pie-35"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Today's <br>Task</h5>
+                      <span class="h2 font-weight-bold mb-0">7</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                        <i class="ni ni-money-coins"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Performance<br><br></h5>
+                      <span class="h2 font-weight-bold mb-0">87.5%</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                        <i class="ni ni-chart-bar-32"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-8">
+          <div class="card bg-default">
+            <div class="card-header bg-transparent text-center">
+              <div class="row justify-content-center">
+
+              <u><h1 class="text-white">Today's Task</h1></u>
+              </div>
+            </div>
+
+            <div class="card-body">
+            {% for project in projects %}
+                {% if project.0.lead == request.user %}
+                  {% include "employee/dash_card_lead.html" %}
+                {% else %}
+                  {% include "employee/dash_card.html" %}
+                {% endif %}
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="card">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+
+
+                   <h1 class="text-dark">Completed Task</h1><hr>
+                </div>
+
+            </div>
+            <div class="card-body">
+
+             <div class="form-check">
+  				<label class="form-check-label">
+    			<input type="checkbox" class="form-check-input active default" value="" checked=""><h3 class="text-gray-dark">Scrum Meeting</h3>
+  				</label>
+			</div>
+			<div class="form-check">
+  				<label class="form-check-label">
+    			<input type="checkbox" class="form-check-input" value="" checked=""><h3 class="text-gray-dark">Meeting with Manager</h3>
+  				</label>
+				</div>
+
+
+             <div class="form-check">
+  				<label class="form-check-label">
+    			<input type="checkbox" class="form-check-input" value="" checked=""><h3 class="text-gray-dark">Fronted Work</h3>
+  				</label>
+			</div>
+			<div class="form-check">
+  				<label class="form-check-label">
+    			<input type="checkbox" class="form-check-input" value=""checked=""> <h3 class="text-gray-dark">Backend Work</h3>
+  				</label>
+			</div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+          <script src="https://cdn.anychart.com/releases/8.0.0/themes/dark_earth.min.js" type="text/javascript"></script>
+          <div id="bar" style="width: 100%; height: 100%"></div>
+
+          <script>
+            // anychart.theme(anychart.themes.darkEarth);
+            anychart.onDocumentReady(function() {
+
+              // set the data
+              var session = {{ sessions | safe  }};
+              console.log(session);
+              var data = {
+                  header: ["Date", "Session Time"],
+                  rows: session
+              };
+
+              // create the chart
+              var chart = anychart.bar();
+
+              // add the data
+              chart.data(data);
+
+              // set the chart title
+              chart.title("Your Sessions(Last week)");
+
+              // draw
+              chart.container("bar");
+              chart.draw();
+              chart.isVertical(false);
+            });
+          </script>
+        </div>
+        <div class="col-xl-6">
+          <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+          <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+          <script type="text/javascript">
+            window.onload = function () {
+
+            var chart2 = new CanvasJS.Chart("chartContainer", {
+              theme: "dark2", // "light2", "dark1", "dark2"
+              animationEnabled: true, // change to true
+              axisY: {
+                title: "Hours",
+                suffix: "hr",
+                ValueFormatString: "#,##0.##" ,
+              },
+              axisX: {
+                title: "Date"
+              },
+              title:{
+                text: "My Session(Last 7 days)"
+              },
+              data: [
+              {
+                // Change type to "bar", "area", "spline", "pie",etc.
+                  type: "column",
+                  dataPoints: {{ session2 | safe }}
+                }
+                ]
+              });
+              chart2.render();
+
+              }
+            </script>
+        </div>
+      </div>
+
+
+
+      </div>
+      <!-- Footer -->
+      <footer class="footer pt-0">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6">
+            <div class="copyright text-center  text-lg-left  text-muted">
+              &copy;   @ 2020 <a href="https://engagenreap.com" class="font-weight-bold ml-1" target="_blank">Enr Consultancy Services</a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="https://engagenreap.com/aboutus.html" class="nav-link" target="_blank">About Us</a>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  {% endblock %}

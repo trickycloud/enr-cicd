@@ -1,0 +1,179 @@
+{% extends 'manager/manager_base.html' %}
+
+{% block content %}
+{% load static %}
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Search form -->
+
+          <!-- Navbar links -->
+          <ul class="navbar-nav align-items-center  ml-md-auto ">
+            <li class="nav-item d-xl-none">
+              <!-- Sidenav toggler -->
+              <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>vew
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item d-sm-none">
+              <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                <i class="ni ni-zoom-split-in"></i>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="{% static 'assets/img/theme/team-5.jpg' %}">
+                  </span>
+                  <div class="media-body  ml-2  d-none d-lg-block">
+                    <span class="mb-0 text-sm  font-weight-bold">{{request.user.name}}</span>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu  dropdown-menu-right ">
+                <div class="dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome!</h6>
+                </div>
+                <a href="Employee_Profile.html" class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span>My profile</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-settings-gear-65"></i>
+                  <span>Settings</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-calendar-grid-58"></i>
+                  <span>Activity</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-support-16"></i>
+                  <span>Support</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-1 mt-1"></div>
+        <div class="col-sm-5">
+
+              <div class="media align-items-center">
+                  <span class="rounded-circle">
+                    <img alt="Image placeholder" class="rounded-circle" width="50%" height="50%" src="{% static 'assets/img/theme/team-5.jpg' %}">
+                  </span>
+
+
+                </div>
+        </div>
+
+        <div class="col-sm-6   ">
+         <u> <h1 class="text-uppercase">Welcome !!</h1></u>
+        <h2 class="text-capitalize my-auto">{{request.user.name}}</h2>
+        <h2 class="">{{request.user.email}}</h2>
+        <h2 class="">{{profile.role}}</h2>
+          <h2 class="">Employee Id: {{request.user.employee_id}}</h2>
+
+        </div>
+      </div>
+      <br>
+      <center><b><h1 class="text-uppercase text-gray-dark"> Personal Details</h1></b></center><hr>
+      <div class="row">
+        <div class="col-sm-1 col-1"></div>
+        <div class="col-sm-11 col-11">
+          <a class="" href="/accounts/edit"><i class="fa fa-edit"></i></a>
+        </div>
+        <div class="col-sm-1 col-1"></div>
+        <div class="col-sm-3 col-3 ">
+           <h2 class=""> Name :</h2>
+           <h2 class=""> Address :</h2>
+           <h2 class=""> phone number:</h2>
+           <h2 class=""> Position  :</h2>
+           <h2 class=""> Department :</h2>
+           <h2>Working Projects:</h2>
+        </div>
+        <div class="col-sm-8 col-8">
+            <h2 class="">{{request.user.name}}</h2>
+            <h2 class="">{{profile.address}}</h2>
+            <h2>{{profile.phone_no}}</h2>
+            <h2>{% if request.user.is_manager %} Manager {% else %} Employee {% endif %}</h2>
+            <h2>{{profile.role}}</h2>
+            <h2>Employee Management System, Smart Parking</h2>
+        </div>
+        <div class="container">
+          <div class="container">
+            <div class="mt-3">
+              <div class="text-center">
+                <h3>Skills</h3>
+                <div class="m-auto">
+                  <table class="table table-striped">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Skill</th>
+                        <th>Rating</th
+                      </tr>
+                    </thead>
+                    {% for skill in skills %}
+                      <tr>
+                        <td>{{skill.skill}}</td>
+                        <td>{{skill.rating}}</td>
+                      </tr>
+                    {% endfor %}
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <hr>
+       <br>
+      </div>
+      <div>
+
+    </div>
+      <!-- Footer -->
+      <footer class="footer pt-0">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6">
+            <div class="copyright text-center  text-lg-left  text-muted">
+              &copy;   @ 2020 <a href="https://engagenreap.com" class="font-weight-bold ml-1" target="_blank">Enr Consultancy Services</a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="https://engagenreap.com/aboutus.html" class="nav-link" target="_blank">About Us</a>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+</body>
+
+
+{% endblock %}

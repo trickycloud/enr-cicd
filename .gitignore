@@ -1,0 +1,15 @@
+venv/
+./venv
+venv/*
+
+/EmpProject/__pycache__
+/EmpApp/__pycache__
+/EmpApp/migrations
+/manager/__pycache__
+/manager/migrations
+/project/__pycache__
+/project/migrations
+/tasks/__pycache__
+/tasks/migrations
+/static_root
+/media

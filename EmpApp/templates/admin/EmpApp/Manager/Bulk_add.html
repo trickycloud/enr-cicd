@@ -1,0 +1,33 @@
+{% extends "admin/base_site.html" %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">Home</a> &rsaquo;
+<a href="{% url 'admin:app_list' app_label='EmpApp' %}">Empapp</a> &rsaquo;
+<a href="{% url 'admin:app_list' app_label='EmpApp' %}manager">Managers</a>
+{% if title %} &rsaquo; {{ title }}{% endif %}
+</div>
+{% endblock %}
+{% block content_title %}
+  {% if title %}<h1>{{ title }}</h1>{% endif %}
+  {% if posttitle %}<h4>{{ posttitle }}</h4>{% endif %}
+  <ul>
+    <li>
+      Email
+    </li>
+    <li>
+      Department
+    </li>
+  </ul>
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="csv"></label>
+    <input id="csv" type="file" name="file">
+    <button type="submit" name="submit">Submit</button>
+  </form>
+  {{ block.super }}
+{% endblock %}
